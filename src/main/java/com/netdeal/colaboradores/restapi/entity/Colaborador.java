@@ -23,6 +23,9 @@ public class Colaborador {
 	
 	@Column(nullable = false)
 	private String senha;
+	
+	@Column(name = "forcaSenha")
+	private int forcaSenha;
 
 	
 	
@@ -71,7 +74,14 @@ public class Colaborador {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public int getForcaSenha() {
+		return forcaSenha;
+	}
 
+	public void setForcaSenha(int forcaSenha) {
+		this.forcaSenha = forcaSenha;
+	}
 
 	
 	@Override
@@ -79,5 +89,6 @@ public class Colaborador {
 		return "Colaborador [id=" + id + ", nome=" + nome + ", cargo=" + cargo + ", senha=" + senha
 				 + " ]";
 	}
+
 	
 }

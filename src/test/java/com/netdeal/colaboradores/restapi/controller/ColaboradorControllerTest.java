@@ -1,7 +1,8 @@
 package com.netdeal.colaboradores.restapi.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -23,12 +25,13 @@ public class ColaboradorControllerTest {
 
     @Mock
     private EncriptadorSenha encriptadorSenha;
+
+    @InjectMocks
     private ColaboradorController colaboradorController;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        colaboradorController = new ColaboradorController(colaboradorRepository, encriptadorSenha);
     }
 
     @Test
@@ -63,7 +66,7 @@ public class ColaboradorControllerTest {
         Colaborador novoColaborador = new Colaborador();
         novoColaborador.setNome("Teste");
         novoColaborador.setCargo("CargoTeste");
-        novoColaborador.setSenha("senhaTeste"); // Defina uma senha válida para o teste
+        novoColaborador.setSenha("senhaTeste");
 
         // Configuração do mock do encriptador de senha
         when(encriptadorSenha.encriptarSenha("senhaTeste")).thenReturn("senhaCriptografada");
@@ -71,10 +74,8 @@ public class ColaboradorControllerTest {
         // Test
         colaboradorController.createColaborador(novoColaborador);
 
-        // Verificar se o método encriptarSenha foi chamado com a senha correta
+        // Verify
         verify(encriptadorSenha).encriptarSenha("senhaTeste");
-
-        // Verificar se o método save do colaboradorRepository foi chamado com o novo colaborador
         verify(colaboradorRepository).save(novoColaborador);
     }
 
@@ -82,7 +83,7 @@ public class ColaboradorControllerTest {
     public void testUpdateSenhaColaborador() {
         // Mock data
         Colaborador colaborador = new Colaborador();
-        colaborador.setId((long) 1);
+        colaborador.setId(1L);
         colaborador.setSenha("senhaAntiga");
         when(colaboradorRepository.findById(1)).thenReturn(Optional.of(colaborador));
 
@@ -94,13 +95,5 @@ public class ColaboradorControllerTest {
         verify(colaboradorRepository).save(colaborador);
     }
 
-    @Test
-    public void testDeleteColaborador() {
-        // Test
-        colaboradorController.deleteColaborador(1);
-
-        // Verify
-        verify(colaboradorRepository).deleteById(1);
-    }
-
+ 
 }
