@@ -1,5 +1,5 @@
 ```sql
-CREATE TABLE colaboradores (
+CREATE TABLE colaborador (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     cargo VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
