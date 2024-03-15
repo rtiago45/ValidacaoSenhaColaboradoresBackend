@@ -14,6 +14,8 @@ CREATE TABLE colaborador (
     senha VARCHAR(255) NOT NULL,
     forca_senha VARCHAR(50)
 );
+
+
 Como Executar o Projeto
 Clone o repositório para o seu ambiente local.
 Importe o projeto em sua IDE de preferência.
