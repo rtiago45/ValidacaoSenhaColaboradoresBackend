@@ -1,13 +1,13 @@
 # Projeto Colaboradores REST API
 
-Este é um projeto que implementa uma REST API para gerenciar informações de colaboradores.
+Este é um projeto que implementa uma REST API para gerenciar informações de colaborador.
 
 ## Configuração do Banco de Dados
 
-Este projeto utiliza MySQL como banco de dados. Abaixo está o script SQL para criar a tabela `colaboradores`:
+Este projeto utiliza MySQL como banco de dados. Abaixo está o script SQL para criar a tabela `colaborador`:
 
 ```sql
-CREATE TABLE colaboradores (
+CREATE TABLE colaborador (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     cargo VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
@@ -27,5 +27,3 @@ GET /colaboradores: Retorna todos os colaboradores.
 GET /colaborador/{id}: Retorna um colaborador específico pelo ID.
 POST /colaborador: Adiciona um novo colaborador.
 PUT /colaborador/{id}/senha: Atualiza a senha de um colaborador pelo ID.
-DELETE /colaborador/{id}: Exclui um colaborador pelo ID.
-Certifique-se de verificar a documentação da API para mais detalhes sobre os endpoints.
